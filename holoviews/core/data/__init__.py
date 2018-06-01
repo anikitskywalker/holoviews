@@ -17,11 +17,13 @@ from .grid import GridInterface
 from .multipath import MultiInterface         # noqa (API import)
 from .image import ImageInterface             # noqa (API import)
 
+default_datatype = 'dictionary'
 datatypes = ['dictionary', 'grid']
 
 try:
     import pandas as pd # noqa (Availability import)
     from .pandas import PandasInterface
+    default_datatype = 'dataframe'
     datatypes = ['dataframe', 'dictionary', 'grid', 'ndelement', 'array']
     DFColumns = PandasInterface
 except ImportError:
